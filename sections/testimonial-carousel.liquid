@@ -1,0 +1,172 @@
+{% assign testimonials = shop.metafields.testimonials.item.value | parse_json %}
+
+<section class="testimonial-carousel">
+	{% if section.settings.heading != blank %}
+		<div class="testimonial-title">
+			<h2>{{ section.settings.heading }}</h2>
+		</div>
+	{% endif %}
+  <div class="carousel-track">
+    {% for item in testimonials %}
+      <div class="testimonial-card">
+        {% if item.avatar %}
+          <img src="{{ item.avatar }}" alt="{{ item.name }}" class="avatar" />
+        {% else %}
+          <div class="avatar placeholder">👤</div>
+        {% endif %}
+
+        <h4>{{ item.name }}</h4>
+        
+        {% if item.rating %}
+          <div class="rating">
+            {% for i in (1..5) %}
+              {% if i <= item.rating %}
+                <span class="star filled">★</span>
+              {% else %}
+                <span class="star empty">★</span>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+        
+        <p class="quote">"{{ item.quote }}"</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  <button class="prev" aria-label="Previous">‹</button>
+  <button class="next" aria-label="Next">›</button>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const track = document.querySelector('.carousel-track');
+  const cards = document.querySelectorAll('.testimonial-card');
+  let index = 0;
+
+  function showSlide(i) {
+    track.style.transform = `translateX(-${i * 100}%)`;
+  }
+
+  document.querySelector('.next').addEventListener('click', () => {
+    index = (index + 1) % cards.length;
+    showSlide(index);
+  });
+
+  document.querySelector('.prev').addEventListener('click', () => {
+    index = (index - 1 + cards.length) % cards.length;
+    showSlide(index);
+  });
+
+  setInterval(() => {
+    index = (index + 1) % cards.length;
+    showSlide(index);
+  }, 5000);
+});
+</script>
+
+<style>
+	.testimonial-carousel .testimonial-title {
+		text-align: center;
+	}
+	.testimonial-carousel .testimonial-title h2 {
+		font-weight: 700;
+		font-size: 24pt;
+	}
+	.testimonial-carousel {
+		position: relative;
+		overflow: hidden;
+		max-width: 800px;
+		margin: auto;
+	}
+
+	.carousel-track {
+		display: flex;
+		transition: transform 0.4s ease-in-out;
+	}
+
+	.testimonial-card {
+		min-width: 100%;
+		box-sizing: border-box;
+		text-align: center;
+		padding: 20px;
+	}
+
+	.avatar {
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		object-fit: cover;
+		margin-bottom: 10px;
+	}
+
+	.avatar.placeholder {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: #eee;
+		font-size: 2rem;
+	}
+
+	.rating {
+		margin: 5px 0;
+		font-size: 1.2rem;
+	}
+
+	.star {
+		font-size: 3rem;
+	}
+
+	.star.filled {
+		color: gold;
+	}
+
+	.star.empty {
+		color: #ccc;
+	}
+
+	.quote {
+		font-style: italic;
+		color: #555;
+	}
+
+	.prev, .next {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		background: white;
+		border: none;
+		padding: 5px 15px;
+		cursor: pointer;
+		font-size: 2.5rem;
+		border-radius: 50%;
+		box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+	}
+
+	.prev:hover, .next:hover {
+		background: #f5f5f5;
+	}
+
+	.prev { left: 10px; }
+	.next { right: 10px; }
+</style>
+
+{% schema %}
+	{
+		"name": "Testimonial Carousel",
+		"settings": [
+			{
+				"type":"text",
+				"id": "heading",
+				"label": "Title Category Slider",
+				"default": "Testimonials"
+			},
+		],
+		"presets": [
+			{
+				"name": "Testimonial Carousel",
+				"category": "Custom"
+			}
+		]
+	}
+{% endschema %}

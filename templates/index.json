@@ -83,12 +83,18 @@
         "button_radius": 6,
         "button_font_size": 14
       }
+    },
+    "testimonial_carousel_4cHUnw": {
+      "type": "testimonial-carousel",
+      "name": "Testimonial Carousel",
+      "settings": {}
     }
   },
   "order": [
     "video_banner_CAeAJJ",
     "featured_collection",
     "category_slider_dqpH9A",
-    "category_slider_Xq3WDr"
+    "category_slider_Xq3WDr",
+    "testimonial_carousel_4cHUnw"
   ]
 }
