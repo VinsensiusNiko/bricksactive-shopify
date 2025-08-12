@@ -78,6 +78,19 @@
         // Trigger update cart drawer di theme Dawn
         document.dispatchEvent(new CustomEvent('cart:refresh'));
 
+        // Refresh cart data
+        fetch('/cart.js')
+          .then(res => res.json())
+          .then(cart => {
+            const cartIconBubble = document.getElementById('cart-icon-bubble');
+            if (cartIconBubble) {
+              const cartCountElement = cartIconBubble.querySelector('.cart-count');
+              if (cartCountElement) {
+                cartCountElement.textContent = cart.item_count;
+              }
+            }
+          });
+
         // Ubah tombol jadi "Added!"
         btn.textContent = 'Added!';
         setTimeout(() => {

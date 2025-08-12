@@ -1,0 +1,124 @@
+<div class="header-info" style="background-color: {{ section.settings.bg_color }}; text-align: {{ section.settings.text_align }};">
+  <div class="info-list">
+		{% for block in section.blocks %}
+			<a href="{{ block.settings.link_url }}" style="color: {{ section.settings.text_color }}; text-decoration:none;">
+				{{ block.settings.link_text }}
+			</a>
+		{% endfor %}
+		{%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
+			<localization-form class="small-hide medium-hide" data-prevent-hide>
+				{%- form 'localization', id: 'HeaderLanguageForm', class: 'localization-form' -%}
+					<div>
+						<h2 class="visually-hidden" id="HeaderLanguageLabel">{{ 'localization.language_label' | t }}</h2>
+						{%- render 'language-localization', localPosition: 'HeaderLanguage' -%}
+					</div>
+				{%- endform -%}
+			</localization-form>
+		{%- endif -%}
+		<a href="#" style="color: {{ section.settings.text_color }}; text-decoration:none;">
+			Help
+		</a>
+	</div>
+</div>
+
+<style>
+	.header-info-section {
+		position: sticky;
+		top: 0;
+	}
+	.header-info {
+		padding: 6px 20px;
+	}
+	.header-info .info-list {
+		display: flex;
+		justify-content: flex-end;
+	}
+	.header-info .info-list a {
+		padding: 0 10px;
+	}
+	.header-info .localization-form {
+		padding: 0;
+	}
+	.header-info .localization-form button.localization-form__select {
+		margin: 0 !important;
+    background: transparent;
+    color: #fff;
+    padding-top: 0;
+    padding-bottom: 0;
+		min-height: unset;
+		height: auto;
+	}
+	.header-info .disclosure__list-wrapper {
+		bottom: -100%;
+		left: -100%;
+		transform: translateY(calc(100% - 10px)) !important;
+	}
+</style>
+
+{% schema %}
+{
+  "name": "Header Info",
+	"class": "header-info-section",
+	"max_blocks": 10,
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+		{
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": true,
+      "label": "t:sections.header.settings.enable_language_selector.label",
+      "info": "t:sections.header.settings.enable_language_selector.info"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text",
+          "default": "New Link"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header Info",
+      "category": "Custom"
+    }
+  ],
+  "enabled_on": {
+    "groups": ["header"]
+  }
+}
+{% endschema %}
