@@ -162,6 +162,39 @@
   </div>
 </div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function setAnnouncementTop() {
+      var headerInfo = document.querySelector('.header-info-section');
+      var header = document.querySelector('.section-header');
+      var announcement = document.querySelector('.announcement-bar-section');
+
+      if (headerInfo && header && announcement) {
+        var headerInfoHeight = headerInfo.offsetHeight;
+        var headerHeight = header.offsetHeight;
+        announcement.style.top = headerInfoHeight + headerHeight + 'px';
+      }
+    }
+
+    // Jalankan saat load
+    setAnnouncementTop();
+
+    // Jalankan ulang saat resize window
+    window.addEventListener('resize', setAnnouncementTop);
+  });
+</script>
+
+
+<style>
+  .announcement-bar .slider-button {
+    display: none;
+  }
+  .announcement-bar-section {
+    position: sticky;
+    z-index: 2 !important;
+  }
+</style>
+
 {% schema %}
 {
   "name": "t:sections.announcement-bar.name",

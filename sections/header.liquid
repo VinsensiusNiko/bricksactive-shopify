@@ -68,6 +68,24 @@
     line-height: calc(1 + 0.8 / var(--font-body-scale));
   }
 
+  .header:not(.header--middle-left,.header--middle-center) .header__inline-menu {
+    margin-top: -43px;
+  }
+  .header-wrapper--border-bottom {
+    border-bottom: 0;
+  }
+  .header__menu-item span {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .header__active-menu-item {
+    text-decoration-color: #ed7501;
+  }
+  .header__menu-item.link:hover span {
+    text-decoration-color: #ed7501;
+  }
+
   @media screen and (min-width: 750px) {
     .list-menu__item--link {
       padding-bottom: 0.5rem;
@@ -465,6 +483,26 @@
     }
   </script>
 {%- endif -%}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function setAnnouncementTop() {
+      var headerInfo = document.querySelector('.header-info-section');
+      var header = document.querySelector('.section-header');
+
+      if (headerInfo) {
+        var headerInfoHeight = headerInfo.offsetHeight;
+        header.style.top = headerInfoHeight + 'px';
+      }
+    }
+
+    // Jalankan saat load
+    setAnnouncementTop();
+
+    // Jalankan ulang saat resize window
+    window.addEventListener('resize', setAnnouncementTop);
+  });
+</script>
 
 {% schema %}
 {

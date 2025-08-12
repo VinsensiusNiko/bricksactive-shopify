@@ -2,28 +2,33 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
+    "header_info_79nAra": {
+      "type": "header-info",
       "blocks": {
-        "announcement-bar-0": {
-          "type": "announcement",
+        "link_DpfeCH": {
+          "type": "link",
           "settings": {
-            "text": "Replicate for bricksactive oke",
-            "link": ""
+            "link_text": "Track Order",
+            "link_url": "#"
+          }
+        },
+        "link_Te7UCt": {
+          "type": "link",
+          "settings": {
+            "link_text": "Store Location",
+            "link_url": "#"
           }
         }
       },
       "block_order": [
-        "announcement-bar-0"
+        "link_DpfeCH",
+        "link_Te7UCt"
       ],
+      "name": "Header Info",
       "settings": {
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "color_scheme": "scheme-1",
-        "show_line_separator": true,
-        "show_social": false,
-        "enable_country_selector": false,
-        "enable_language_selector": false
+        "bg_color": "#121212",
+        "text_color": "#ffffff",
+        "text_align": "right"
       }
     },
     "header": {
@@ -41,13 +46,47 @@
         "enable_language_selector": true,
         "enable_customer_avatar": true,
         "margin_bottom": 0,
-        "padding_top": 20,
-        "padding_bottom": 20
+        "padding_top": 4,
+        "padding_bottom": 0
+      }
+    },
+    "announcement_bar_pL4JLi": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_xRWh9x": {
+          "type": "announcement",
+          "settings": {
+            "text": "Special Offers - Dont miss it",
+            "link": ""
+          }
+        },
+        "announcement_yCaKVd": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free Shipping - On all order",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_xRWh9x",
+        "announcement_yCaKVd"
+      ],
+      "name": "t:sections.announcement-bar.presets.name",
+      "settings": {
+        "auto_rotate": false,
+        "change_slides_speed": 3,
+        "color_scheme": "scheme-f5c076ed-e194-4809-b38d-ac921447d8ed",
+        "show_line_separator": false,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false
       }
     }
   },
   "order": [
-    "announcement-bar",
-    "header"
+    "header_info_79nAra",
+    "header",
+    "announcement_bar_pL4JLi"
   ]
 }
