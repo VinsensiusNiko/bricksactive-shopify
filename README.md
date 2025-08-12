@@ -5,17 +5,17 @@ Implementasi https://www.bricksactive.id/ pada theme Shopify Dawn.
 
 ## Fitur yang Dikerjakan
 - Section Hero banner dengan video background.
-    --> video menggunakan link url youtube
-    --> button label dan link bisa disesuaikan
-    --> configuration dilakukan pada shopify editor admin   
+    -> video menggunakan link url youtube
+    -> button label dan link bisa disesuaikan
+    -> configuration dilakukan pada shopify editor admin   
 - Section Product Category slider dengan tombol add-to-cart
-    --> memilih category/collection
-    --> title dan button bisa disesuaikan
-    --> configuration dilakukan pada shopify editor admin  
-    --> masih ada bug pada ajax button add to cart, perlu pindah halaman/refresh halaman untuk update cart quantity
+    -> memilih category/collection
+    -> title dan button bisa disesuaikan
+    -> configuration dilakukan pada shopify editor admin  
+    -> masih ada bug pada ajax button add to cart, perlu pindah halaman/refresh halaman untuk update cart quantity
 - Section Testimonial
-    --> tampilan css langsung dari code
-    --> value testimonial masih hardcode berupa format json, value testimonial diambil dari metadata. di edit dari Settings > Metafields and metaobjects > shop > Testimonials json > More action > edit value
+    -> tampilan css langsung dari code
+    -> value testimonial masih hardcode berupa format json, value testimonial diambil dari metadata. di edit dari Settings > Metafields and metaobjects > shop > Testimonials json > More action > edit value
 - modify layout homepage, desktop & responsive
 
 ## Tools & Teknologi
